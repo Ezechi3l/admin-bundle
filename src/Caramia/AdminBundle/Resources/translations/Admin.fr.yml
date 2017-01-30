@@ -1,0 +1,23 @@
+Establishment: Établissement
+Name: Nom
+Code: Code
+Dashboard: Accueil
+Admin Etablishment List: Liste des établissements
+content: Contenu
+filter_text_placholder: Valeur
+login.forgot_password: Mot de passe oublié ?
+login.submit: Connexion
+login.title: Administration
+login.login: Login
+login.password: Mot de passe
+request_password.title: Réinitialiser mon mot de passe
+request_password.email: Adresse e-mail
+request_password.submit: Envoyer mon mot de passe
+request_password.success: Un e-mail vous indiquant comment réinitialiser votre mot de passe vous a été envoyé.
+request_password.unknown_user: Compte inconnu
+reset_password.title: Réinitialiser mon mot de passe
+reset_password.password: Mot de passe
+reset_password.confirm: Confirmer le mot de passe
+reset_password.submit: Valider
+reset_password.success: Vous avez réinitialisé votre mot de passe. Vous pouvez désormais vous connecter.
+# request_password.unknown_user: Compte inconnu
