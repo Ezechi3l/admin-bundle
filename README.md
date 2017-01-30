@@ -101,6 +101,9 @@ caramia_admin:
     resource: "@CaramiaAdminBundle/Resources/config/routing.yml"
 ```
 
+## To do
+[ ] Remplacer la fixture de création d'utilisteur par une commande
+...
 
 ## Contribuer
 
