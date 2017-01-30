@@ -1,0 +1,66 @@
+services:
+    caramia_admin.validator_unique_attribute:
+        class: Caramia\AdminBundle\Validator\Constraints\UniqueAttributeValidator
+        arguments: ["@doctrine.orm.default_entity_manager"]
+        tags:
+            - { name: validator.constraint_validator, alias: validator_unique_attribute }
+
+    caramia_admin.user.manager:
+        class: Caramia\AdminBundle\User\Manager\UserManager
+        arguments:
+            - "@doctrine.orm.default_entity_manager"
+            - "@security.encoder_factory"
+            - "@event_dispatcher"
+            - "@security.password_encoder"
+            - "@caramia_admin.repository.user"
+
+    caramia_admin.form.type.change_password:
+        class: Caramia\AdminBundle\Form\Type\ChangePasswordType
+        arguments:
+            - "@caramia_admin.user.manager"
+        tags:
+            - { name: form.type, alias: change_password }
+
+    caramia_admin.change_password_handler:
+        class: Caramia\AdminBundle\User\Password\ChangePasswordFormHandler
+        arguments:
+            - "@caramia_admin.user.manager"
+
+    caramia_admin.repository.user:
+        class: Caramia\AdminBundle\Repository\UserRepository
+        factory: ["@doctrine", getRepository]
+        arguments: [Caramia\AdminBundle\Entity\User]
+
+    caramia_admin.form.type.request_password:
+        class: Caramia\AdminBundle\Form\Type\RequestPasswordType
+        arguments: ['@caramia_admin.user.manager', '@translator']
+        tags:
+            - { name: form.type, alias: request_password_form }
+
+    caramia_admin.request_password.handler:
+        class: Caramia\AdminBundle\User\Password\RequestPasswordFormHandler
+        arguments: ['@caramia_admin.user.manager']
+
+    caramia_admin.send_request_password_mail_listener:
+        class: Caramia\AdminBundle\EventListener\SendRequestPasswordMailListener
+        arguments:
+            - '@mailer'
+            - '@twig'
+            - '@router'
+            - '@security.csrf.token_generator'
+            - '@caramia_admin.user.manager'
+            - CaramiaAdminBundle:mail:request_password_mail.html.twig
+            - contact@caramia.fr
+        tags:
+            - { name: kernel.event_listener, event: caramia_admin.new_password_requested, method: onRequestedPassword }
+
+    caramia_admin.form.type.reset_password:
+        class: Caramia\AdminBundle\Form\Type\ResetPasswordType
+        arguments: ['@caramia_admin.user.manager', '@request_stack']
+        tags:
+            - { name: form.type, alias: reset_password_form }
+
+    caramia_admin.reset_password.handler:
+        class: Caramia\AdminBundle\User\Password\ResetPasswordFormHandler
+        arguments:
+            - "@caramia_admin.user.manager"

@@ -1,0 +1,38 @@
+.sonata-filter-form .row > div {
+    margin-bottom: 6px;
+}
+
+.sonata-ba-list-label {
+    text-align: left !important;
+}
+
+.sonata-ba-list-label + td {
+    text-align: right;
+}
+
+.sonata-ba-list-field-header-batch {
+    width: 40px;
+}
+
+.skin-black .main-header > .logo,
+.skin-black .main-header > .logo:hover {
+    background-color: #222d32;
+    border-right: none;
+    color: #fff;
+}
+
+.admin-login {
+    height: 100vh;
+}
+
+.admin-login .wrapper {
+    background-color: #fff;
+    height: 100%;
+}
+
+.admin-login .well {
+    width: 480px;
+    margin: auto;
+    top: 20%;
+    position: relative;
+}

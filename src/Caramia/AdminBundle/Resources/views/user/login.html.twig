@@ -1,0 +1,40 @@
+{% extends 'CaramiaAdminBundle::standard_layout.html.twig' %}
+
+{% block sonata_header %}{% endblock %}
+
+{% block body_attributes %}class="sonata-bc skin-black fixed admin-login"{% endblock %}
+
+{% block sonata_wrapper %}
+
+    {% block main %}
+        <div class="well login-form">
+
+            {% include 'CaramiaAdminBundle:user:flash.html.twig' %}
+            
+            <form action="{{ path('security_login_check') }}" method="post">
+                <fieldset>
+                    <legend><i class="fa fa-lock"></i> {{ 'login.title'|trans({}, 'Admin')}}</legend>
+                    <div class="form-group">
+                        <label for="username">{{ 'login.login'|trans({}, 'Admin')}}</label>
+                        <input type="email" id="username" name="_username" value="{{ last_username }}" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">{{ 'login.password'|trans({}, 'Admin')}}</label>
+                        <input type="password" id="password" name="_password" class="form-control" required>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-sign-in"></i> {{ 'login.submit'|trans({}, 'Admin')}}
+                    </button>
+
+                    <a href="{{ path('request_password') }}" class="btn btn-link">
+                        {{ 'login.forgot_password'|trans({}, 'Admin')}}
+                    </a>
+                </fieldset>
+            </form>
+        </div>
+    {% endblock %}
+{% endblock %}

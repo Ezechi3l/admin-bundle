@@ -1,0 +1,18 @@
+{
+    "name": "caramia/admin-bundle",
+    "type": "library",
+    "require": {
+        "knplabs/knp-menu-bundle": "^2.1",
+        "sonata-project/admin-bundle": "^3.10",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "authors": [
+        {
+            "name": "Rémi",
+            "email": "remi@caramia.fr"
+        }
+    ]
+}
