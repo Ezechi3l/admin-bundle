@@ -46,7 +46,7 @@ public function registerBundles()
 
     if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
         // ...
-        Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+        $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
         // ...
     }
 
@@ -72,7 +72,14 @@ parameters:
 ### `app/config/security.yml`
 
 ```yaml
-firewalls:
+security:
+    providers:
+        # in_memory:
+            # memory: ~
+        database_users:
+            entity: { class: CaramiaAdminBundle:User, property: email }
+
+    firewalls:
         # ...
 
         admin:

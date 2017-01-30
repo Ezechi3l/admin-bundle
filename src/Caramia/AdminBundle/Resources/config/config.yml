@@ -8,6 +8,7 @@ parameters:
 security:
     encoders:
         Caramia\AdminBundle\Entity\UserInterface: sha512
+        
     providers:
         database_users:
             entity: { class: CaramiaAdminBundle:User, property: email }
