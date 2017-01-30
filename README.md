@@ -103,7 +103,6 @@ caramia_admin:
 
 ## To do
 - [ ] Remplacer la fixture de création d'utilisteur par une commande
-...
 
 ## Contribuer
 
