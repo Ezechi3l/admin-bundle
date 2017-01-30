@@ -6,9 +6,31 @@ Embarque une gestion d'utilisateur back-office.
 
 ## Installation
 
+### `composer.json`
+
+```json
+    ...
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@gitlab.caramia.fr:caramia/CaramiaAdminBundle.git"
+        }
+    ],
+    ...
+    "require": {
+        "caramia/admin-bundle": "dev-master"
+    }
+```
+
+```
+composer install
+```
+
 ### `app/AppKernel.php`
 
 ```php
+<?php
+
 public function registerBundles()
 {
     $bundles = array(
@@ -70,3 +92,16 @@ firewalls:
         main:
             # ...
 ```
+
+### `app/config/routing.yml`
+
+```yml
+# ...
+caramia_admin:
+    resource: "@CaramiaAdminBundle/Resources/config/routing.yml"
+```
+
+
+## Contribuer
+
+Les contributions sont les bienvenues. Clonez le dépôt et [faites une merge request](https://gitlab.caramia.fr/caramia/CaramiaAdminBundle/merge_requests) !
