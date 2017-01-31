@@ -15,3 +15,12 @@ reset_password.confirm: Confirmer le mot de passe
 reset_password.submit: Valider
 reset_password.success: Vous avez réinitialisé votre mot de passe. Vous pouvez désormais vous connecter.
 # request_password.unknown_user: Compte inconnu
+admin.edit.title: Modification
+admin.add.title: Ajout
+no_result: Aucun élément
+logout: Déconnexion
+title_batch_confirmation: Confirmer l'action '%action%'
+btn_execute_batch_action: Continuer
+message_batch_all_confirmation: Voulez-vous continuer ?
+message_batch_confirmation: Voulez-vous continuer ?
+link_action_list: Annuler

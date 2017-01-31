@@ -82,18 +82,12 @@ file that was distributed with this source code.
                     </table>
                 {% else %}
                     {% block no_result_content %}
-                        <div class="info-box">
-                            <span class="info-box-icon bg-aqua"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span>
+                        <div class="info-box info-box--centered">
                             <div class="info-box-content">
-                                <span class="info-box-text">{{ 'no_result'|trans({}, 'SonataAdminBundle') }}</span>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 0%"></div>
-                                </div>
-                                <span class="progress-description">
-                                    {% if not app.request.xmlHttpRequest %}
-                                        {% include 'SonataAdminBundle:Button:create_button.html.twig' %}
-                                    {% endif %}
-                                </span>
+                                <span class="info-box-text">{{ 'no_result'|trans({}, 'Admin') }}</span>
+                                {% if not app.request.xmlHttpRequest %}
+                                    <p>{% include 'CaramiaAdminBundle:Button:create_button.html.twig' %}</p>
+                                {% endif %}
                             </div><!-- /.info-box-content -->
                         </div>
                     {% endblock %}

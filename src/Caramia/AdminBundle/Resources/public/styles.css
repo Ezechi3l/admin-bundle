@@ -36,3 +36,13 @@
     top: 20%;
     position: relative;
 }
+.info-box-content {
+    margin-left: 0;
+}
+
+.info-box--centered {
+    text-align: center;
+}
+.info-box--centered .info-box-text {
+    margin-bottom: 20px;
+}

@@ -53,22 +53,17 @@
             {% if app.user and is_granted('ROLE_SONATA_ADMIN') %}
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        {% block sonata_top_nav_menu_add_block %}
+                        {#% block sonata_top_nav_menu_add_block %}
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-plus-square fa-fw" aria-hidden="true"></i> <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </a>
                                 {% include sonata_admin.adminPool.getTemplate('add_block') %}
                             </li>
-                        {% endblock %}
+                        {% endblock %#}
                         {% block sonata_top_nav_menu_user_block %}
                             <li class="dropdown user-menu">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-user fa-fw" aria-hidden="true"></i> <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-user">
-                                    {% include sonata_admin.adminPool.getTemplate('user_block') %}
-                                </ul>
+                                {% include sonata_admin.adminPool.getTemplate('user_block') %}
                             </li>
                         {% endblock %}
                     </ul>
@@ -78,6 +73,103 @@
     </nav>
 {% endblock sonata_nav %}
 
-{% block sonata_sidebar_search %}{% endblock sonata_sidebar_search %}
+{% block sonata_wrapper %}
+            {% block sonata_left_side %}
+                <aside class="main-sidebar">
+                    <section class="sidebar">
+                        {% block sonata_side_nav %}
+                            {% block sonata_sidebar_search %}{% endblock sonata_sidebar_search %}
 
-{% block side_bar_after_nav %}{% endblock %}
+                            {% block side_bar_before_nav %} {% endblock %}
+                            {% block side_bar_nav %}
+                                {{ knp_menu_render('sonata_admin_sidebar', {template: sonata_admin.adminPool.getTemplate('knp_menu_template')}) }}
+                            {% endblock side_bar_nav %}
+                            {% block side_bar_after_nav %}{% endblock %}
+                        {% endblock sonata_side_nav %}
+                    </section>
+                </aside>
+            {% endblock sonata_left_side %}
+
+            <div class="content-wrapper">
+                {% block sonata_page_content %}
+                    <section class="content-header">
+
+                        {% block sonata_page_content_header %}
+                            {% block sonata_page_content_nav %}
+                                {% if _tab_menu is not empty or _actions is not empty or _list_filters_actions is not empty %}
+                                    <nav class="navbar navbar-default" role="navigation">
+                                        <div class="container-fluid">
+                                            {% block tab_menu_navbar_header %}
+                                                {% if _navbar_title is not empty %}
+                                                    <div class="navbar-header">
+                                                        <a class="navbar-brand" href="#">{{ _navbar_title|raw }}</a>
+                                                    </div>
+                                                {% endif %}
+                                            {% endblock %}
+
+                                            <div class="navbar-collapse">
+                                                <div class="navbar-left">
+                                                    {% if _tab_menu is not empty %}
+                                                        {{ _tab_menu|raw }}
+                                                    {% endif %}
+                                                </div>
+
+                                                {% block sonata_admin_content_actions_wrappers %}
+                                                    {% if _actions|replace({ '<li>': '', '</li>': '' })|trim is not empty %}
+                                                        <ul class="nav navbar-nav navbar-right">
+                                                            {{ _actions|raw }}
+                                                        </ul>
+                                                    {% endif %}
+                                                {% endblock sonata_admin_content_actions_wrappers %}
+
+                                                {% if _list_filters_actions is not empty %}
+                                                    {{ _list_filters_actions|raw }}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </nav>
+                                {% endif %}
+                            {% endblock sonata_page_content_nav %}
+                        {% endblock sonata_page_content_header %}
+                    </section>
+
+                    <section class="content">
+                        {% block sonata_admin_content %}
+
+                            {% block notice %}
+                                {% include 'SonataCoreBundle:FlashMessage:render.html.twig' %}
+                            {% endblock notice %}
+
+                            {% if _preview is not empty %}
+                                <div class="sonata-ba-preview">{{ _preview|raw }}</div>
+                            {% endif %}
+
+                            {% if _content is not empty %}
+                                <div class="sonata-ba-content">{{ _content|raw }}</div>
+                            {% endif %}
+
+                            {% if _show is not empty %}
+                                <div class="sonata-ba-show">{{ _show|raw }}</div>
+                            {% endif %}
+
+                            {% if _form is not empty %}
+                                <div class="sonata-ba-form">{{ _form|raw }}</div>
+                            {% endif %}
+
+                            {% if _list_table is not empty or _list_filters is not empty %}
+                                {% if _list_filters|trim %}
+                                    <div class="row">
+                                        {{ _list_filters|raw }}
+                                    </div>
+                                {% endif %}
+
+                                <div class="row">
+                                    {{ _list_table|raw }}
+                                </div>
+
+                            {% endif %}
+                        {% endblock sonata_admin_content %}
+                    </section>
+                {% endblock sonata_page_content %}
+            </div>
+        {% endblock sonata_wrapper %}
