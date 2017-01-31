@@ -40,6 +40,7 @@ public function registerBundles()
         new Knp\Bundle\MenuBundle\KnpMenuBundle(),
         new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
         new Sonata\AdminBundle\SonataAdminBundle(),
+        new Sonata\IntlBundle\SonataIntlBundle(),
         new Caramia\AdminBundle\CaramiaAdminBundle(),
         // ...
     );
