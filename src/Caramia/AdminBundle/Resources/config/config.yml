@@ -74,6 +74,10 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts: [admin]
 
+        sonata.admin.block.stats: ~
+        caramia.block.counter: ~
+        caramia.block.shortlist: ~
+
 sonata_intl:
     timezone:
         default: Europe/Paris

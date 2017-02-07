@@ -64,6 +64,26 @@ services:
         class: Caramia\AdminBundle\User\Password\ResetPasswordFormHandler
         arguments:
             - "@caramia_admin.user.manager"
+
+    caramia.block.counter:
+        class: Caramia\AdminBundle\Block\Service\CounterBlockService
+        arguments:
+            - caramia-counter-block-service
+            - '@templating'
+            - '@doctrine.orm.default_entity_manager'
+        tags:
+            - { name: sonata.block }
+
+    caramia.block.shortlist:
+        class: Caramia\AdminBundle\Block\Service\ShortListBlockService
+        arguments:
+            - caramia-shortlist-block-service
+            - '@templating'
+            - '@doctrine.orm.default_entity_manager'
+            - '@sonata.admin.pool'
+        tags:
+            - { name: sonata.block }
+
     sonata.admin.breadcrumbs_builder:
         class: Caramia\AdminBundle\Admin\BreadcrumbsBuilder
         arguments: [%sonata.admin.configuration.breadcrumbs%]

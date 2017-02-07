@@ -46,3 +46,12 @@
 .info-box--centered .info-box-text {
     margin-bottom: 20px;
 }
+
+.caramiaCounter-container {
+    text-align: center;
+}
+
+.caramiaCounter-number {
+    font-size: 64px;
+
+}
