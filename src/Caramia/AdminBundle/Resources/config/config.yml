@@ -90,3 +90,21 @@ sonata_intl:
 twig:
     form_themes:
         - 'SonataCoreBundle:Form:datepicker.html.twig'
+
+ivory_ck_editor:
+    default_config: light_config
+    configs:
+        base_config:
+            extraPlugins: 'button,clipboard,filetools,lineutils,notification,notificationaggregator,toolbar,filebrowser,uploadwidget,uploadimage,widget'
+            imageUploadUrl: '/admin/upload'
+            toolbar:
+                - [ "Bold", "Italic", "Underline", "Format" ]
+                - [ "Link", "Unlink", "Anchor", '-', "NumberedList", "BulletedList", '-', "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock" ]
+                - [ "Undo", "Redo" ]
+                - [ "Image", "File"]
+        light_config:
+            toolbar:
+                - [ "Bold", "Italic", "Underline", "Format", "-", "NumberedList", "BulletedList" ]
+                - [ "Link", "Unlink" ]
+                - [ "Undo", "Redo" ]
+                - [ "Image", "File"]
