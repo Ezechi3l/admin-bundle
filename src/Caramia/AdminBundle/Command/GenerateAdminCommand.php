@@ -88,8 +88,9 @@ class GenerateAdminCommand extends ContainerAwareCommand
         $adminClassBasename = Validators::validateAdminClassBasename($adminClassBasename);
         $managerType = $input->getOption('manager') ?: $this->getDefaultManagerType();
         $modelManager = $this->getModelManager($managerType);
-        $skeletonDirectory = $this->getKernel()->getContainer()->get('kernel')->locateResource('@SonataAdminBundle/Resources/skeleton');
-        // $skeletonDirectory = __DIR__.'/../Resources/skeleton';
+        // $skeletonDirectory = $this->getKernel()->getContainer()->get('kernel')->locateResource('@SonataAdminBundle/Resources/skeleton');
+        $baseSkeletonDirectory = $this->getKernel()->getContainer()->get('kernel')->locateResource('@SonataAdminBundle/Resources/skeleton');
+        $skeletonDirectory = __DIR__.'/../Resources/skeleton';
         $adminGenerator = new AdminGenerator($modelManager, $skeletonDirectory);
 
         try {
@@ -106,7 +107,7 @@ class GenerateAdminCommand extends ContainerAwareCommand
 
         if ($controllerClassBasename = $input->getOption('controller')) {
             $controllerClassBasename = Validators::validateControllerClassBasename($controllerClassBasename);
-            $controllerGenerator = new ControllerGenerator($skeletonDirectory);
+            $controllerGenerator = new ControllerGenerator($baseSkeletonDirectory);
 
             try {
                 $controllerGenerator->generate($bundle, $controllerClassBasename);

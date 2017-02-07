@@ -64,3 +64,6 @@ services:
         class: Caramia\AdminBundle\User\Password\ResetPasswordFormHandler
         arguments:
             - "@caramia_admin.user.manager"
+    sonata.admin.breadcrumbs_builder:
+        class: Caramia\AdminBundle\Admin\BreadcrumbsBuilder
+        arguments: [%sonata.admin.configuration.breadcrumbs%]
