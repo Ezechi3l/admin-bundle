@@ -40,7 +40,7 @@ sonata_admin:
         action:                         SonataAdminBundle:CRUD:action.html.twig
         select:                         SonataAdminBundle:CRUD:list__select.html.twig
         filter:                         CaramiaAdminBundle:Form:filter_admin_fields.html.twig
-        dashboard:                      SonataAdminBundle:Core:dashboard.html.twig
+        dashboard:                      CaramiaAdminBundle:Core:dashboard.html.twig
         search:                         SonataAdminBundle:Core:search.html.twig
         batch_confirmation:             CaramiaAdminBundle:CRUD:batch_confirmation.html.twig
         inner_list_row:                 SonataAdminBundle:CRUD:list_inner_row.html.twig
@@ -66,6 +66,10 @@ sonata_admin:
     title: Administration
     options:
         title_mode: single_text
+
+    # dashboard:
+    #     blocks:
+    #         - { position: left, type: sonata.admin.block.admin_list }
 
 sonata_block:
     default_contexts: [cms]
