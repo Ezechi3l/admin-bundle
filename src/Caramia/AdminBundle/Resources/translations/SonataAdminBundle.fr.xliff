@@ -148,23 +148,23 @@
             </trans-unit>
             <trans-unit id="flash_create_success">
                 <source>flash_create_success</source>
-                <target>L'élément "%name%" a été créé avec succès.</target>
+                <target>%name% a été créé avec succès.</target>
             </trans-unit>
             <trans-unit id="flash_create_error">
                 <source>flash_create_error</source>
-                <target>Une erreur est intervenue lors de la création de l'élément "%name%".</target>
+                <target>Une erreur est intervenue lors de la création de %name%.</target>
             </trans-unit>
             <trans-unit id="flash_edit_success">
                 <source>flash_edit_success</source>
-                <target>L'élément "%name%" a été mis à jour avec succès.</target>
+                <target>%name% a été mis à jour avec succès.</target>
             </trans-unit>
             <trans-unit id="flash_edit_error">
                 <source>flash_edit_error</source>
-                <target>Une erreur est intervenue lors de la mise à jour de l'élément "%name%".</target>
+                <target>Une erreur est intervenue lors de la mise à jour de %name%.</target>
             </trans-unit>
             <trans-unit id="flash_lock_error">
                 <source>flash_lock_error</source>
-                <target>Un autre utilisateur a modifié l'élément "%name%". Veuillez %link_start%cliquer ici%link_end% pour recharger la page et appliquer les changements à nouveau.</target>
+                <target>Un autre utilisateur a modifié %name%. Veuillez %link_start%cliquer ici%link_end% pour recharger la page et appliquer les changements à nouveau.</target>
             </trans-unit>
             <trans-unit id="flash_batch_delete_success">
                 <source>flash_batch_delete_success</source>

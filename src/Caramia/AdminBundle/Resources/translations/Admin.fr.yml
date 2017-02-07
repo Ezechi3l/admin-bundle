@@ -24,3 +24,9 @@ btn_execute_batch_action: Continuer
 message_batch_all_confirmation: Voulez-vous continuer ?
 message_batch_confirmation: Voulez-vous continuer ?
 link_action_list: Annuler
+title_edit: Éditer %name%
+flash_create_success: %name% a été créé avec succès.
+flash_create_error: Une erreur est intervenue lors de la création de %name%.
+flash_edit_success: %name% a été mis à jour avec succès.
+flash_edit_error: Une erreur est intervenue lors de la mise à jour de %name%.
+flash_lock_error: Un autre utilisateur a modifié %name%. Veuillez %link_start%cliquer ici%link_end% pour recharger la page et appliquer les changements à nouveau.
