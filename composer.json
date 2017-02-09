@@ -8,11 +8,11 @@
         "sonata-project/intl-bundle": "^2.3",
         "egeloen/ckeditor-bundle": "^4.0",
         "symfony/intl": "^3.2",
-        "ext-intl" : "*"
+        "ext-intl": "*",
+	"doctrine/doctrine-fixtures-bundle": "^2.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7",
-        "doctrine/doctrine-fixtures-bundle": "^2.3"
+        "phpunit/phpunit": "^5.7"
     },
     "authors": [
         {

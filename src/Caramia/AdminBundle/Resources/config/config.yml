@@ -13,17 +13,6 @@ security:
         database_users:
             entity: { class: CaramiaAdminBundle:User, property: email }
 
-    access_control:
-        # URL of FOSUserBundle which need to be available to anonymous users
-        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/reset-password, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/request-password, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
-        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
-
-
 sonata_admin:
     templates:
         layout:                         CaramiaAdminBundle::standard_layout.html.twig
