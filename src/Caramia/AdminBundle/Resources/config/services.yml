@@ -87,3 +87,10 @@ services:
     sonata.admin.breadcrumbs_builder:
         class: Caramia\AdminBundle\Admin\BreadcrumbsBuilder
         arguments: [%sonata.admin.configuration.breadcrumbs%]
+
+    valid_client_ip_voter:
+        class:      Caramia\AdminBundle\Security\ValidClientIpVoter
+        arguments:  ["@service_container", "@monolog.logger"]
+        public:     false
+        tags:
+          - { name: security.voter }

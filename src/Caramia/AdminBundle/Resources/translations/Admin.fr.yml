@@ -30,3 +30,7 @@ flash_create_error: Une erreur est intervenue lors de la création de %name%.
 flash_edit_success: %name% a été mis à jour avec succès.
 flash_edit_error: Une erreur est intervenue lors de la mise à jour de %name%.
 flash_lock_error: Un autre utilisateur a modifié %name%. Veuillez %link_start%cliquer ici%link_end% pour recharger la page et appliquer les changements à nouveau.
+
+entity.ip_admin: Adresses IP
+Ip Admin List: Adresses IP
+Ip Admin Create: Ajouter une adresse IP

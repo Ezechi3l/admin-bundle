@@ -109,6 +109,50 @@ caramia_admin:
     resource: "@CaramiaAdminBundle/Resources/config/routing.yml"
 ```
 
+## Filtrage d'IP
+
+Le bundle inclue un système de filtrage de l'accès au back-office par IP. Désactivé par défaut, il est activable de la façon suivante :
+
+### `app/config/config.yml`
+
+```yaml
+parameters:
+    # ...
+    enabled_check_ip: true
+```
+
+### Ajouter les IP souhaitées (`app/config/config.yml`)
+
+```yaml
+parameters:
+    # ...
+    allowed_ips:
+        - '127.0.0.0/8'
+        - '82.127.78.104' # IP Caramia Marché du Lez
+```
+
+### `app/config/security.yml`
+
+```yaml
+security:
+    # ...
+    access_decision_manager:
+        strategy: unanimous
+```
+
+### Ajouter l'admin (app/config/services.yml)
+```yaml
+services:
+    # ...
+    admin.ip_admin:
+        class: Caramia\AdminBundle\Admin\IpAdmin
+        arguments: [~, Caramia\AdminBundle\Entity\IpAdmin, ~]
+        tags:
+            - { name: sonata.admin, label: entity.ip_admin, group: Sécurité, manager_type: orm, label_catalogue: Admin  }
+        calls:
+            - [setTranslationDomain, [Admin]]
+```
+
 ## To do
 - [ ] Remplacer la fixture de création d'utilisteur par une commande
 

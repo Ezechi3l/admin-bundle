@@ -363,4 +363,9 @@ class User implements UserInterface, Serializable
     {
         $this->isAlreadyRequested = $isAlreadyRequested;
     }
+    
+    public function hasRole($role)
+    {
+        return in_array(strtoupper($role), $this->getRoles(), true);
+    }
 }
