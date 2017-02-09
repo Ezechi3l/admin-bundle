@@ -16,14 +16,10 @@ Embarque une gestion d'utilisateur back-office.
             "url": "git@gitlab.caramia.fr:caramia/CaramiaAdminBundle.git"
         }
     ],
-    ...
-    "require": {
-        "caramia/admin-bundle": "dev-master"
-    }
 ```
 
 ```
-composer install
+composer require "caramia/admin-bundle:dev-master"
 ```
 
 ### `app/AppKernel.php`
@@ -41,6 +37,7 @@ public function registerBundles()
         new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
         new Sonata\AdminBundle\SonataAdminBundle(),
         new Sonata\IntlBundle\SonataIntlBundle(),
+        new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
         new Caramia\AdminBundle\CaramiaAdminBundle(),
         // ...
     );
@@ -66,20 +63,21 @@ imports:
     # ...
 
 parameters:
+    locale: fr
     caramia_admin.default_username: example@example.com
     caramia_admin.default_password: hyper-secure-2000
+    # ...
+
+framework:
+    translator:      { fallbacks: ["%locale%"] }
+    # ...
 ```
 
 ### `app/config/security.yml`
 
 ```yaml
 security:
-    providers:
-        # in_memory:
-            # memory: ~
-        database_users:
-            entity: { class: CaramiaAdminBundle:User, property: email }
-
+    # ...
     firewalls:
         # ...
 
@@ -99,6 +97,16 @@ security:
 
         main:
             # ...
+            
+    access_control:
+        # URL of FOSUserBundle which need to be available to anonymous users
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/reset-password, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/request-password, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
 ```
 
 ### `app/config/routing.yml`
