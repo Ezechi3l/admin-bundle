@@ -57,7 +57,7 @@ sonata_admin:
 
     title: Administration
     options:
-        title_mode: single_text
+        title_mode: both
 
     # dashboard:
     #     blocks:

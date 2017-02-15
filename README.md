@@ -97,9 +97,8 @@ security:
 
         main:
             # ...
-            
+
     access_control:
-        # URL of FOSUserBundle which need to be available to anonymous users
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -161,8 +160,11 @@ services:
             - [setTranslationDomain, [Admin]]
 ```
 
-## To do
-- [ ] Remplacer la fixture de création d'utilisteur par une commande
+## Créer un utilisateur
+
+```shell
+$ php app/console caramia-admin:create-user
+```
 
 ## Contribuer
 
