@@ -166,6 +166,16 @@ services:
 $ php app/console caramia-admin:create-user
 ```
 
+## Création d'admins
+
+Le bundle override la commande de génération d'admin de Sonata pour prendre
+en compte la méthode `breadCrumbsItem` d'une classe admin, qui permet de personnaliser
+le contenu du breadcrumb pour une entité donnée, et quelques éléments de traductions.
+
+```shell
+$ php app/console sonata:admin:generate
+```
+
 ## Contribuer
 
 Les contributions sont les bienvenues. Clonez le dépôt et [faites une merge request](https://gitlab.caramia.fr/caramia/CaramiaAdminBundle/merge_requests) !
