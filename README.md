@@ -78,6 +78,13 @@ framework:
 ```yaml
 security:
     # ...
+    
+    providers:
+        admin_users:
+            entity: { class: CaramiaAdminBundle:User, property: email }
+
+
+    # ...
     firewalls:
         # ...
 
