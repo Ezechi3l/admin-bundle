@@ -1,21 +1,6 @@
 imports:
     - { resource: "@CaramiaAdminBundle/Resources/config/services.yml" }
 
-parameters:
-    caramia_admin.default_username: admin@caramia.fr
-    caramia_admin.default_password: caramia
-    allowed_ips:
-        - '127.0.0.0/8'
-        - '82.127.78.104'
-
-security:
-    encoders:
-        Caramia\AdminBundle\Entity\UserInterface: sha512
-
-    providers:
-        database_users:
-            entity: { class: CaramiaAdminBundle:User, property: email }
-
 sonata_admin:
     templates:
         layout:                         CaramiaAdminBundle::standard_layout.html.twig

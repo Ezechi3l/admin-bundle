@@ -64,8 +64,6 @@ imports:
 
 parameters:
     locale: fr
-    caramia_admin.default_username: example@example.com
-    caramia_admin.default_password: hyper-secure-2000
     # ...
 
 framework:
@@ -78,11 +76,13 @@ framework:
 ```yaml
 security:
     # ...
-    
+  
+    encoders:
+        Caramia\AdminBundle\Entity\UserInterface: sha512 
+
     providers:
         admin_users:
             entity: { class: CaramiaAdminBundle:User, property: email }
-
 
     # ...
     firewalls:
@@ -113,6 +113,20 @@ security:
         - { path: ^/admin/request-password, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+```
+
+### `app/config/services.yml`
+```yaml
+services:
+    # ...
+
+	admin.administrators:
+        class: Caramia\AdminBundle\Admin\UserAdmin
+        arguments: [~, Caramia\AdminBundle\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, label: entity.administrators, group: Sécurité, manager_type: orm, label_catalogue: Admin  }
+        calls:
+            - [setTranslationDomain, [Admin]]
 ```
 
 ### `app/config/routing.yml`
@@ -154,7 +168,7 @@ security:
         strategy: unanimous
 ```
 
-### Ajouter l'admin (app/config/services.yml)
+### `app/config/services.yml`
 ```yaml
 services:
     # ...
@@ -166,13 +180,6 @@ services:
         calls:
             - [setTranslationDomain, [Admin]]
 
-	admin.administrators:
-        class: Caramia\AdminBundle\Admin\UserAdmin
-        arguments: [~, Caramia\AdminBundle\Entity\User, ~]
-        tags:
-            - { name: sonata.admin, label: entity.administrators, group: Sécurité, manager_type: orm, label_catalogue: Admin  }
-        calls:
-            - [setTranslationDomain, [Admin]]
 ```
 
 ## Créer un utilisateur
