@@ -34,3 +34,8 @@ flash_lock_error: Un autre utilisateur a modifié %name%. Veuillez %link_start%c
 entity.ip_admin: Adresses IP
 Ip Admin List: Adresses IP
 Ip Admin Create: Ajouter une adresse IP
+
+entity.administrators: Administrateurs
+User List: Liste des adminitrateurs
+Is Active: Actif
+Plain Password: Mot de passe

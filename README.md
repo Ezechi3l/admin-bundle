@@ -165,6 +165,14 @@ services:
             - { name: sonata.admin, label: entity.ip_admin, group: Sécurité, manager_type: orm, label_catalogue: Admin  }
         calls:
             - [setTranslationDomain, [Admin]]
+
+	admin.administrators:
+        class: Caramia\AdminBundle\Admin\UserAdmin
+        arguments: [~, Caramia\AdminBundle\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, label: entity.administrators, group: Sécurité, manager_type: orm, label_catalogue: Admin  }
+        calls:
+            - [setTranslationDomain, [Admin]]
 ```
 
 ## Créer un utilisateur
