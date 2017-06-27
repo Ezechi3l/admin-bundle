@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * User
  *
- * @ORM\Table(name="admin_user")
+ * @ORM\Table(name="admin__user")
  * @ORM\Entity(repositoryClass="Caramia\AdminBundle\Repository\UserRepository")
  * @UniqueEntity(fields="email", message="That email is taken!")
  */
