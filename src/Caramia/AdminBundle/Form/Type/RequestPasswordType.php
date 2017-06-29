@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Translation\DataCollectorTranslator;
+use Symfony\Component\Translation\TranslatorInterface;
 use Caramia\AdminBundle\User\Manager\UserManagerInterface;
 use Caramia\AdminBundle\User\Password\RequestPassword;
 
@@ -23,15 +23,15 @@ class RequestPasswordType extends AbstractType
     private $handler;
     /**
      *
-     * @var DataCollectorTranslator
+     * @var TranslatorInterface
      */
     private $translator;
 
     /**
      * @param UserManagerInterface $userManager
-     * @param DataCollectorTranslator $translator
+     * @param TranslatorInterface $translator
      */
-    public function __construct(UserManagerInterface $userManager, DataCollectorTranslator $translator)
+    public function __construct(UserManagerInterface $userManager, TranslatorInterface $translator)
     {
         $this->handler = $userManager;
         $this->translator = $translator;
