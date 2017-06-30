@@ -8,6 +8,6 @@ abstract class AbstractAdmin extends BaseAbstractAdmin
 {
     public function breadCrumbsItem($object)
     {
-        return parent::toString($object);
+        return static::toString($object);
     }
 }
